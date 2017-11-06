@@ -20,13 +20,20 @@ class Dashboard extends Component {
         return (
             <div>
                 <h1>DashBoard Page</h1>
-                {Array.isArray(categories) && categories.map((category) =>(
-                    <Link key={category.name} to={`/categories/${category.name}`}>{category.name}</Link>
-                ))}
-
-                {Array.isArray(posts) && posts.map((post)=>(
-                    <PostSummary key={post.id} post={post} />
-                ))}
+                <div className="row">
+                    <div className="col-md-3">
+                        <ul className="list-group">
+                            {Array.isArray(categories) && categories.map((category) =>(
+                               <li className="list-group-item"> <Link key={category.name} to={`/categories/${category.name}`}>{category.name}</Link></li>
+                            ))}
+                        </ul>
+                    </div>
+                    <div className="col-md-9">
+                        {Array.isArray(posts) && posts.map((post)=>(
+                            <PostSummary key={post.id} post={post} />
+                        ))}
+                    </div>
+                </div>
             </div>
         )
     }

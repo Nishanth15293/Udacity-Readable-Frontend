@@ -4,6 +4,8 @@ import {connect} from 'react-redux'
 import * as fetchAPI from '../Utils/fetchUtil'
 import * as helpers from '../Utils/helpers'
 import {getComments} from '../Actions/comment'
+import CommentList from './CommentList'
+
 class PostDetail extends Component{
     state={}
 
@@ -17,7 +19,7 @@ class PostDetail extends Component{
     }
 
     render() {
-        const { posts, match } = this.props;
+        const { posts, comments, match } = this.props;
         if(posts){
             var post = posts[match.params.post_id];
         }else{
@@ -32,6 +34,7 @@ class PostDetail extends Component{
                     
                     <p>{post.body}</p>
                     <span className="badge">Posted {post.timestamp}</span><div className="pull-right">Tags</div>         
+                    <CommentList comments={comments}/>
                 </div>
             }
             </div>
@@ -42,7 +45,7 @@ class PostDetail extends Component{
 function mapStateToProps({posts, comments}, {match}){
     return {
         posts,
-        comments
+        comments: helpers.arrayFromObject(comments)
     }
 }
 

@@ -11,7 +11,7 @@ class PostSummary extends Component{
     render() {
         const { post } = this.props;
         return(
-            <div className="container">
+            <div className="row">
                 <div className="col-md-12">
                     <h1><Link to={`/posts/${post.id}`}>{post.title}</Link></h1>
                     <h6>{post.author}</h6>

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Comment  from './Comment';
 
-class Comment extends Component{
+class CommentList extends Component{
     state={}
 
     componentDidMount(){
@@ -9,14 +10,13 @@ class Comment extends Component{
     }
 
     render() {
-        const { comment } = this.props;
+        const { comments } = this.props;
         return(
             <div className="container">
                 <div className="row">
-                    <div className="col-md-12">
-                        <h3>{comment.author}</h3>
-                        <p>{comment.body}</p>
-                    </div>
+                {Array.isArray(comments) && comments.map((comment)=>(
+                    <Comment key={comment.id} comment={comment} />
+                ))}
                 </div>
             </div>
         );
@@ -25,4 +25,4 @@ class Comment extends Component{
 
 
 
-export default Comment
+export default CommentList

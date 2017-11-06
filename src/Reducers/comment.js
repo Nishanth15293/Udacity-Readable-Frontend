@@ -6,7 +6,6 @@ const initialState = {
 
 export default function comments( state = initialState, action){
 
-    debugger;
     switch(action.type){
         case RECEIVE_COMMENTS: {
             const { comments } = action;
