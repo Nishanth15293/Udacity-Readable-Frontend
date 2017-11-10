@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
-import * as fetchAPI from '../Utils/fetchUtil'
 import * as helpers from '../Utils/helpers'
 import {getComments} from '../Actions/comment'
 import CommentList from './CommentList'
@@ -10,7 +9,7 @@ class PostDetail extends Component{
     state={}
 
     componentDidMount(){
-        const {posts, match, receiveCmnts,dispatch} = this.props;
+        const {posts, match, dispatch} = this.props;
         const post = posts?posts[match.params.post_id]:{}
         if(post && post.id){
             dispatch(getComments(post.id));

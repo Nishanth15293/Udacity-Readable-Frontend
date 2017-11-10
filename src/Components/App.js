@@ -9,6 +9,7 @@ import { getCategories } from '../Actions/category';
 import { getPosts } from '../Actions/post';
 import { withRouter } from 'react-router-dom'
 import PostDetail from './PostDetail'
+import CreatePost from './CreatePost'
 class App extends Component {
 
   componentDidMount() {
@@ -48,9 +49,10 @@ class App extends Component {
         />
         {/* <Route exath path='/create' 
           render={(history)=> {
-            <CreateEdit />
+            <CreatePost />
           }}
         /> */}
+        <Route exact path='/newPost' component= {CreatePost}/>
 
       </div>
     );

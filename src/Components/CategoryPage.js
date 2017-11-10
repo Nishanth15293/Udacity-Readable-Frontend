@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import * as fetchAPI from '../Utils/fetchUtil'
 import PostSummary from './PostSummary'
 import { connect } from 'react-redux'
 import * as helpers from '../Utils/helpers'

@@ -19,3 +19,12 @@ export function objectFromArray(arr, key = 'id') {
   export function arrayFromObject(obj, key = 'id') {
     return Object.keys(obj).map(key => (obj[key]));
   }
+
+  export function guid() {
+    function random() {
+      return Math.floor((1 + Math.random()) * 0x10000)
+        .toString(16)
+        .substring(1);
+    }
+    return random()
+  }
