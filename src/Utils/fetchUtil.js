@@ -44,7 +44,7 @@ export const getPostDetail = (postId) => {
 }
 
 //option: "upVote" or "downVote"
-export const addScoreOnPost = (postId, postData) => {
+export const votePost = (postId, postData) => {
     return axios.post(`${api}/posts/${postId}`, postData, { headers })
         .then(res => res.data);
 }
@@ -69,8 +69,8 @@ export const getPostComments = (postId) => {
 }
 
 
-export const AddComment = (commentData) => {
-    return axios.post(`${api}/posts`, commentData, { headers })
+export const addComment = (commentData) => {
+    return axios.post(`${api}/comments`, commentData, { headers })
         .then(res => res.data);
 }
 
@@ -81,7 +81,7 @@ export const getCommentDetail = (commentId) => {
 }
 
 //option: "upVote" or "downVote"
-export const addScoreOnComment = (commentId, commentData) => {
+export const voteComment = (commentId, commentData) => {
     return axios.post(`${api}/comments/${commentId}`, commentData, { headers })
         .then(res => res.data);
 }
@@ -91,7 +91,7 @@ export const updateComment = (commentId, commentData) => {
         .then(res => res.data);
 }
 
-export const deletecomment = (commentId) => {
+export const deleteComment = (commentId) => {
     return axios.delete(`${api}/comments/${commentId}`, { headers })
         .then(res => res.data);
 }

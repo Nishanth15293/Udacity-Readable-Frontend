@@ -10,6 +10,9 @@ import { getPosts } from '../Actions/post';
 import { withRouter } from 'react-router-dom'
 import PostDetail from './PostDetail'
 import CreatePost from './CreatePost'
+import CreateComment from './CreateComment'
+import EditComment from './EditComment'
+import EditPost from './EditPost'
 class App extends Component {
 
   componentDidMount() {
@@ -42,17 +45,17 @@ class App extends Component {
             <CategoryPage match={match}/>
           )}
         />
-        <Route exath path='/posts/:post_id' 
+        {/* <Route exath path='/posts/:post_id' 
           render={({match})=> (
             <PostDetail match={match}/>
           )}
-        />
-        {/* <Route exath path='/create' 
-          render={(history)=> {
-            <CreatePost />
-          }}
         /> */}
+        <Route exact path='/posts/:post_id' component= {PostDetail}/>
+        
         <Route exact path='/newPost' component= {CreatePost}/>
+        <Route exact path='/editPost/:id' component= {EditPost}/>
+        <Route exact path='/posts/:id/comment' component= {CreateComment}/>
+        <Route exact path='/posts/:id/:comment_id/edit' component= {EditComment}/>
 
       </div>
     );

@@ -1,15 +1,26 @@
-import { RECEIVE_POSTS } from '../Actions/post';
+import { RECEIVE_POSTS, VOTE_POST, DELETE_POST } from '../Actions/post';
+import * as helpers from '../Utils/helpers';
 
-const initialState = {
-    
-};
 
-export default function posts( state = initialState, action){
+export default function posts( state = {}, action){
 
     switch(action.type){
         case RECEIVE_POSTS: {
             const { posts } = action;
             return posts
+        }
+
+        case VOTE_POST:
+            return Object.keys(state).map(id => {
+                var post;
+                if(id === action.postId) {
+                post = action.payload
+                }
+                return post
+            })
+
+        case DELETE_POST:{
+            return helpers.arrayFromObject(state).filter(post => post.id !== action.postId)
         }
 
         default: {

@@ -5,6 +5,7 @@ import PostSummary from './PostSummary';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router-dom'
 import {getPosts} from '../Actions/post'
+import {getCategories} from '../Actions/category'
 
 class Dashboard extends Component {
     state = {
@@ -13,12 +14,13 @@ class Dashboard extends Component {
 
     componentWillMount() {
         this.props.getPosts();
+        this.props.getCategories();
     }
 
     sortBy(posts, filter) {
         if(filter === 'voteScore'){
             return posts.sort((a,b)=>{
-                return a.voteScore > b.voteScore;
+                return b.voteScore - a.voteScore;
             });
         }else if(filter === 'timestamp'){
             return posts.sort((a,b)=>{
@@ -53,14 +55,14 @@ class Dashboard extends Component {
                 <div className="row">
                     <div className="col-md-3">
                         <ul className="list-group">
-                            {Array.isArray(categories) && categories.map((category) =>(
-                               <li className="list-group-item"> <Link key={category.name} to={`/categories/${category.name}`}>{category.name}</Link></li>
+                            {Array.isArray(categories) && categories.length > 0 && categories.map((category) =>(
+                                <li key={category.name} className="list-group-item"> <Link  to={`/categories/${category.name}`}>{category.name}</Link></li>
                             ))}
                         </ul>
                     </div>
                     <div className="col-md-9">
                         {Array.isArray(sortedPosts) && posts.map((post)=>(
-                            <PostSummary key={post.id} post={post} />
+                            post && <PostSummary key={post.id} post={post} />
                         ))}
                     </div>
                 </div>
@@ -77,4 +79,4 @@ function mapStateToProps({categories, posts}){
     }
 }
 
-export default withRouter(connect(mapStateToProps, {getPosts})(Dashboard))
+export default withRouter(connect(mapStateToProps, {getPosts, getCategories})(Dashboard))
