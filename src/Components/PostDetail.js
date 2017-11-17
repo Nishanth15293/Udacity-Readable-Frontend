@@ -11,16 +11,17 @@ import { Link }  from 'react-router-dom'
 import FaThumbsDown from 'react-icons/lib/fa/thumbs-down'
 import FaThumbsUp from 'react-icons/lib/fa/thumbs-up'
 import FaTrash from 'react-icons/lib/fa/trash'
-
+import Loading from './Loading'
 class PostDetail extends Component{
     state={}
 
     componentWillMount(){
-        const {posts, match, getComments} = this.props;
-        const post = posts?posts[match.params.post_id]:{}
-        if(post && post.id){
-            getComments(post.id);
-        }
+        // const {posts, match, getComments} = this.props;
+        // const post = posts?posts[match.params.post_id]:{}
+        // if(post && post.id){
+        //     getComments(post.id);   //do this on commentList component instead
+        // }
+        this.props.getPosts();
     }
 
     onPostDelete = (id) => {
@@ -30,13 +31,14 @@ class PostDetail extends Component{
     }
 
     render() {
-        const { posts, comments, match, getPosts, votePost } = this.props;
-        if(posts){
-            var post = posts[match.params.post_id];
-        }else{
-           var post = {};
-        }
+        const { post, comments, match, getPosts, votePost } = this.props;
+        // if(posts){
+        //     var post = posts[match.params.post_id];
+        // }else{
+        //    var post = {};
+        // }
         return(
+            (!post)?<Loading />:
             <div className="container">
             {post && 
                 <div className="col-md-12"> 
@@ -66,7 +68,7 @@ class PostDetail extends Component{
                                 getPosts()}}/> </span>
                         </div>
                     </div>
-                    {<CommentList comments={comments} />}
+                    <CommentList postId={post.id} />
                     {<Link to={`/posts/${post.id}/comment`}> Add Comment</Link>}
                 </div>
             }
@@ -77,7 +79,7 @@ class PostDetail extends Component{
 
 function mapStateToProps({posts, comments}, {match}){
     return {
-        posts,
+        post: posts[match.params.post_id],  //get the required post here and set local component prop post value here instead of componentWIllMount
         comments: helpers.arrayFromObject(comments)
     }
 }

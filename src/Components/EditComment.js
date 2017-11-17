@@ -36,10 +36,10 @@ class EditComment extends Component{
             (!comment) ? <Loading /> :
             <div className='row post-form'>
                 <form className='col-offset-md-2 col-md-8' onSubmit={this.updateComment.bind(this)}>
-                    <div className='form-group'>
+                    {/* <div className='form-group'>
                         <label htmlFor='author'>Author</label>
                         <input type='text'  defaultValue={comment.author} id='author' className='form-control' placeholder='Author' />
-                    </div>
+                    </div> */}
                     <div className='form-group'>
                         <label htmlFor='body'>Comment</label>
                         <textarea type='text' defaultValue={comment.body} id='body' className='form-control' placeholder='Comment' />

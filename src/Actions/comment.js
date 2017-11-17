@@ -59,7 +59,7 @@ export const deleteComment = (commentId, callback) => dispatch => (
 function deleteCommentSuccess(data) {
     return {
         type: DELETE_COMMENT,
-        payload: data
+        comment: data
     }
 }
 
@@ -76,6 +76,6 @@ export function voteComment(commentId, vote, cb) {
 function voteCommentSuccess(data) {
     return {
         type: VOTE_COMMENT,
-        payload: data
+        comment: data
     }
 }

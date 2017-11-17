@@ -31,7 +31,10 @@ export default function comments( state = initialState, action){
             }
 
         case VOTE_COMMENT:
-            return state
+            return {
+                ...state,
+                [action.comment.id]:action.comment
+            }
 
         default: {
             return state
