@@ -43,37 +43,39 @@ class CreatePost extends Component{
     render() {
         const { categories } = this.props;
         return(
-            <div className='row post-form'>
-                <form className='col-offset-md-2 col-md-8'>
-                    <div className='form-group'>
-                        <label htmlFor='postTitle'>Title</label>
-                        <input type='text' value={this.state.title} onChange={(e) => this.valueChange('title', e.target.value)} id='postTitle' className='form-control' placeholder='Title' />
-                    </div>
-                    <div className='form-group'>
-                        <label htmlFor='body'>Body</label>
-                        <textarea type='text' id='body' value={this.state.body} onChange={(e) => this.valueChange('body', e.target.value)} className='form-control' placeholder='Content' />
-                    </div>
-                    <div className='row'>
-                        <div className='form-group col-md-6'>
-                            <label htmlFor='author'>Author</label>
-                            <input type='text' id='author' value={this.state.author} onChange={(e) => this.valueChange('author', e.target.value)} className='form-control' placeholder='Author' />
+            <div className="container">
+                <div className='row post-form'>
+                    <form className='col-offset-md-2 col-md-8'>
+                        <div className='form-group'>
+                            <label htmlFor='postTitle'>Title</label>
+                            <input type='text' value={this.state.title} onChange={(e) => this.valueChange('title', e.target.value)} id='postTitle' className='form-control' placeholder='Title' />
                         </div>
-                        <div className='form-group col-md-6 category-selection-margin'>
-                            <label htmlFor='category'>Category</label>
-                            <select className='category-selection' onChange={(e) => this.valueChange('category', e.target.value)}>
-                                {categories.length > 0 && categories.map((category) => (
-                                    <option value={category.name} key={category.name}>{category.name}</option>
-                                ))}
-                            </select>
-                        </div>   
-                    </div>
-                    <div className='row'>
-                        <span className='btn btn-md btn-primary margin-btn' onClick={() => this.onSubmit()}>Submit</span>
-                        <Link to='/'>
-                            <span className='btn btn-md btn-default margin-btn'>Cancel</span>
-                        </Link>
-                    </div>
-                </form>
+                        <div className='form-group'>
+                            <label htmlFor='body'>Body</label>
+                            <textarea type='text' id='body' value={this.state.body} onChange={(e) => this.valueChange('body', e.target.value)} className='form-control' placeholder='Content' />
+                        </div>
+                        <div className='row'>
+                            <div className='form-group col-md-6'>
+                                <label htmlFor='author'>Author</label>
+                                <input type='text' id='author' value={this.state.author} onChange={(e) => this.valueChange('author', e.target.value)} className='form-control' placeholder='Author' />
+                            </div>
+                            <div className='form-group col-md-6 category-selection-margin'>
+                                <label htmlFor='category'>Category</label>
+                                <select className='category-selection' onChange={(e) => this.valueChange('category', e.target.value)}>
+                                    {categories.length > 0 && categories.map((category) => (
+                                        <option value={category.name} key={category.name}>{category.name}</option>
+                                    ))}
+                                </select>
+                            </div>   
+                        </div>
+                        <div className='row'>
+                            <span className='btn btn-md btn-primary margin-btn' onClick={() => this.onSubmit()}>Submit</span>
+                            <Link to='/'>
+                                <span className='btn btn-md btn-default margin-btn'>Cancel</span>
+                            </Link>
+                        </div>
+                    </form>
+                </div>
             </div>
         );
     }

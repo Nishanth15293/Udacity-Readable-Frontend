@@ -39,7 +39,6 @@ class Dashboard extends Component {
         const sortedPosts = this.sortBy(posts, filter); 
         return (
             <div>
-                <h1>DashBoard Page</h1>
                 <div className="row">
                 <div className="col-md-4"></div>
                     <div className="col-md-4">

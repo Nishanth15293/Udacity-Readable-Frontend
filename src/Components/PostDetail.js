@@ -69,7 +69,7 @@ class PostDetail extends Component{
                         </div>
                     </div>
                     <CommentList postId={post.id} />
-                    {<Link to={`/posts/${post.id}/comment`}> Add Comment</Link>}
+                    {<Link className="btn btn-primary" to={`/posts/${post.id}/comment`}> Add Comment</Link>}
                 </div>
             }
             </div>

@@ -20,7 +20,6 @@ class EditPost extends Component{
         const postData = {};
         postData.title = e.target.title.value;
         postData.body = e.target.body.value;
-        debugger;
         
         if(postData.title !== '' && postData.body !== '' ) {
             this.props.editPost(this.props.post.id, postData, () => {
@@ -35,26 +34,27 @@ class EditPost extends Component{
 
     render() {
         const { categories, post } = this.props;
-        debugger;
         return(
             (!post) ? <Loading /> :
-            <div className='row post-form'>
-                <form className='col-offset-md-2 col-md-8' onSubmit={this.onSubmit}>
-                    <div className='form-group'>
-                        <label htmlFor='postTitle'>Title</label>
-                        <input type='text'  defaultValue={post.title} id='title' className='form-control' placeholder='Title' />
-                    </div>
-                    <div className='form-group'>
-                        <label htmlFor='body'>Body</label>
-                        <textarea type='text' defaultValue={post.body} id='body' className='form-control' placeholder='Content' />
-                    </div>
-                    <div className='row'>
-                        <button type='submit' className='btn btn-md btn-primary margin-btn'>Update</button>
-                        <Link to={`/posts/${post.id}`}>
-                            <button>Cancel</button>
-                        </Link>
-                    </div>
-                </form>
+            <div className="container">
+                <div className='row post-form'>
+                    <form className='col-offset-md-2 col-md-8' onSubmit={this.onSubmit}>
+                        <div className='form-group'>
+                            <label htmlFor='postTitle'>Title</label>
+                            <input type='text'  defaultValue={post.title} id='title' className='form-control' placeholder='Title' />
+                        </div>
+                        <div className='form-group'>
+                            <label htmlFor='body'>Body</label>
+                            <textarea type='text' defaultValue={post.body} id='body' className='form-control' placeholder='Content' />
+                        </div>
+                        <div className='row'>
+                            <button type='submit' className='btn btn-md btn-primary margin-btn'>Update</button>
+                            <Link to={`/posts/${post.id}`}>
+                                <button>Cancel</button>
+                            </Link>
+                        </div>
+                    </form>
+                </div>
             </div>
         );
     }

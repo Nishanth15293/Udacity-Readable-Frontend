@@ -26,23 +26,25 @@ class CreateComment extends Component{
     render() {
         const { categories } = this.props;
         return(
-            <div className='row post-form'>
-                <form className='col-offset-md-2 col-md-8' onSubmit={this.addComment.bind(this)}>
-                    <div className='form-group'>
-                        <label htmlFor='author'>Author</label>
-                        <input type='text'  id='author' className='form-control' placeholder='Author' />
-                    </div>
-                    <div className='form-group'>
-                        <label htmlFor='body'>Comment</label>
-                        <textarea type='text' id='body' className='form-control' placeholder='Comment' />
-                    </div>
-                    <div className='row'>
-                        <button type='submit' className='btn btn-primary '>Submit</button>
-                        <Link to={`/posts/${this.props.match.params.id}`}>
-                            <span className='btn btn-default '>Cancel</span>
-                        </Link>
-                    </div>
-                </form>
+            <div className="container">
+                <div className='row post-form'>
+                    <form className='col-offset-md-2 col-md-8' onSubmit={this.addComment.bind(this)}>
+                        <div className='form-group'>
+                            <label htmlFor='author'>Author</label>
+                            <input type='text'  id='author' className='form-control' placeholder='Author' />
+                        </div>
+                        <div className='form-group'>
+                            <label htmlFor='body'>Comment</label>
+                            <textarea type='text' id='body' className='form-control' placeholder='Comment' />
+                        </div>
+                        <div className='row'>
+                            <button type='submit' className='btn btn-primary '>Submit</button>
+                            <Link to={`/posts/${this.props.match.params.id}`}>
+                                <span className='btn btn-default '>Cancel</span>
+                            </Link>
+                        </div>
+                    </form>
+                </div>
             </div>
         );
     }

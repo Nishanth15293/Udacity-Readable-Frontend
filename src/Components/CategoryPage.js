@@ -14,9 +14,12 @@ class CategoryPage extends Component {
 
     render() {
         const { posts, match } = this.props;
-        const categoryPosts = posts.filter((post)=>(post.category === match.params.category));
+        const catName = match.params.category;
+        const categoryPosts = posts.filter((post)=>(post.category === catName));
+        const categoryHeading = catName.charAt(0).toUpperCase() + catName.slice(1, catName.length) + ' Posts'; 
         return (
-            <div>
+            <div className="container">
+                <h1 className="category-header">{categoryHeading}</h1>
                 {Array.isArray(categoryPosts) && categoryPosts.map((post)=>(
                     
                     <PostSummary key={post.id} post={post} />
