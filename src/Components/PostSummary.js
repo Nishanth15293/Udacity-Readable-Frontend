@@ -22,7 +22,7 @@ class PostSummary extends Component{
         return(
             <div className="row">
                 <div className="col-md-12">
-                    <h1><Link to={`/posts/${post.id}`}>{post.title}</Link></h1>
+                    <h1><Link to={`/${post.category}/${post.id}`}>{post.title}</Link></h1>
                     <strong>{author}</strong>
                     
                     <p>{post.body}</p>
