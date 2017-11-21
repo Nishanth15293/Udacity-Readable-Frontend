@@ -9,11 +9,6 @@ import {connect} from 'react-redux'
 
 
 class Comment extends Component{
-    state={}
-
-    componentDidMount(){
-
-    }
 
     onCommentDelete = (comment) =>{
         let parentId = comment.parentId

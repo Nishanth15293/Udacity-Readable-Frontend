@@ -35,17 +35,8 @@ class App extends Component {
           </div>
           <div className="col-md-1"></div>
         </div>
-        <Route exact path='/' 
-          render={(history)=> (
-            <Dashboard />
-          )}
-        />
-       
-        <Route exact path='/categories/:category' 
-          render={({match})=>(
-            <CategoryPage match={match}/>
-          )}
-        />
+        <Route exact path='/' component={Dashboard} />
+        <Route exact path='/categories/:category' component={CategoryPage} />
     
         <Route exact path='/:category/:post_id' component= {PostDetail}/>
         <Route exact path='/newPost' component= {CreatePost}/>
