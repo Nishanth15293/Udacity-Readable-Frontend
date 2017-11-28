@@ -16,12 +16,8 @@ class PostDetail extends Component{
     state={}
 
     componentWillMount(){
-        // const {posts, match, getComments} = this.props;
-        // const post = posts?posts[match.params.post_id]:{}
-        // if(post && post.id){
-        //     getComments(post.id);   //do this on commentList component instead
-        // }
         this.props.getPosts();
+        // this.props.getComments(this.props.post.id);
     }
 
     onPostDelete = (id) => {
@@ -32,11 +28,6 @@ class PostDetail extends Component{
 
     render() {
         const { post, comments, match, getPosts, votePost } = this.props;
-        // if(posts){
-        //     var post = posts[match.params.post_id];
-        // }else{
-        //    var post = {};
-        // }
         return(
             (!post)?<Loading />:
             <div className="container">
@@ -66,6 +57,7 @@ class PostDetail extends Component{
                             <span ><FaThumbsDown onClick={() => {
                                 votePost(post.id, 'downVote') 
                                 getPosts()}}/> </span>
+                            <span className="comment-circle">{comments.length} comments</span>
                         </div>
                     </div>
                     <CommentList postId={post.id} />
@@ -79,8 +71,10 @@ class PostDetail extends Component{
 
 function mapStateToProps({posts, comments}, {match}){
     return {
-        post: posts[match.params.post_id],  //get the required post here and set local component prop post value here instead of componentWIllMount
-        comments: helpers.arrayFromObject(comments)
+        post: posts[match.params.post_id],
+        comments: helpers.arrayFromObject(comments).filter((comment)=>{
+            return comment.parentId === match.params.post_id;
+        })
     }
 }
 

@@ -9,7 +9,11 @@ export default function comments( state = initialState, action){
     switch(action.type){
         case RECEIVE_COMMENTS: {
             const { comments } = action
-            return comments
+            // return {
+            //     ...state, 
+            //     comments
+            // }
+            return Object.assign({}, state, comments)
         }
 
         case CREATE_COMMENT:

@@ -5,12 +5,6 @@ import * as helpers from '../Utils/helpers'
 import { withRouter } from 'react-router-dom'
 
 class CategoryPage extends Component {
-    state = {
-        posts : [],
-    }
-
-    componentDidMount() {
-    }
 
     render() {
         const { posts, match } = this.props;

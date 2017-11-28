@@ -36,7 +36,7 @@ class App extends Component {
           <div className="col-md-1"></div>
         </div>
         <Route exact path='/' component={Dashboard} />
-        <Route exact path='/categories/:category' component={CategoryPage} />
+        <Route exact path='/:category' component={CategoryPage} />
     
         <Route exact path='/:category/:post_id' component= {PostDetail}/>
         <Route exact path='/newPost' component= {CreatePost}/>

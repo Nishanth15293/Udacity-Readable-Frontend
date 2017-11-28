@@ -55,7 +55,7 @@ class Dashboard extends Component {
                     <div className="col-md-3">
                         <ul className="list-group">
                             {Array.isArray(categories) && categories.length > 0 && categories.map((category) =>(
-                                <li key={category.name} className="list-group-item"> <Link  to={`/categories/${category.name}`}>{category.name}</Link></li>
+                                <li key={category.name} className="list-group-item"> <Link  to={`/${category.name}`}>{category.name}</Link></li>
                             ))}
                         </ul>
                     </div>

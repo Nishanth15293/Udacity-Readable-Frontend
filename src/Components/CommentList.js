@@ -6,7 +6,6 @@ import {withRouter} from 'react-router-dom'
 import * as helpers from '../Utils/helpers'
 
 class CommentList extends Component{
-    state={}
 
     componentDidMount(){
         this.props.getComments(this.props.postId)
@@ -26,9 +25,11 @@ class CommentList extends Component{
     }
 }
 
-function mapStateToProps({comments}){
+function mapStateToProps({comments}, {match}){
     return {
-        comments: helpers.arrayFromObject(comments)
+        comments: helpers.arrayFromObject(comments).filter((comment)=>{
+            return comment.parentId === match.params.post_id;
+        })
     }
 }
 

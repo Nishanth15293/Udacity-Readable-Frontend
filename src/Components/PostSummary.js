@@ -7,17 +7,21 @@ import {votePost, getPosts} from '../Actions/post'
 import {withRouter} from 'react-router-dom'
 import * as helpers from '../Utils/helpers';
 import {connect} from 'react-redux'
+import {getComments} from '../Actions/comment'
 
 
 class PostSummary extends Component{
-    state={}
+
+    // componentWillMount(){
+    //     this.props.getPosts();
+    // }
 
     componentDidMount(){
-        this.props.getPosts();
+        this.props.getComments(this.props.post.id);
     }
 
     render() {
-        const { post, getPosts, votePost } = this.props;
+        const { post, getPosts, votePost, comments } = this.props;
         const author = post.author.charAt(0).toUpperCase() + post.author.slice(1, post.author.length);
         return(
             <div className="row">
@@ -37,6 +41,8 @@ class PostSummary extends Component{
                         <span ><FaThumbsDown onClick={() => {debugger;
                             votePost(post.id, 'downVote') 
                             getPosts()}}/> </span>
+                        <span className="comment-circle">{comments.length} comments</span>
+
                     </div>
                 </div>
             </div>
@@ -44,17 +50,22 @@ class PostSummary extends Component{
     }
 }
 
-function mapStateToProps({}, { post }) {
+function mapStateToProps({comments}, { post }) {
+    let cmnts = helpers.arrayFromObject(comments).filter((comment)=>{
+        return comment.parentId === post.id;
+    })
     return {
-      post
+      post,
+      comments: cmnts
     }
   }
 
 function mapDispatchToProps(dispatch) {
     return{
         votePost: (id, option) => dispatch(votePost(id, option)),
-        getPosts: () => dispatch(getPosts())
+        // getPosts: () => dispatch(getPosts()),
+        getComments: (postId) => dispatch(getComments(postId)),
     }
 }
 
-export default withRouter(connect(null, mapDispatchToProps)(PostSummary))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PostSummary))
