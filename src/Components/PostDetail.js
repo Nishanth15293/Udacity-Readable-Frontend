@@ -12,6 +12,7 @@ import FaThumbsDown from 'react-icons/lib/fa/thumbs-down'
 import FaThumbsUp from 'react-icons/lib/fa/thumbs-up'
 import FaTrash from 'react-icons/lib/fa/trash'
 import Loading from './Loading'
+import NotFound from './NotFound'
 class PostDetail extends Component{
     state={}
 
@@ -29,7 +30,7 @@ class PostDetail extends Component{
     render() {
         const { post, comments, match, getPosts, votePost } = this.props;
         return(
-            (!post)?<Loading />:
+            (!post)?<NotFound />:
             <div className="container">
             {post && 
                 <div className="col-md-12"> 
@@ -38,7 +39,7 @@ class PostDetail extends Component{
                             <h1>{post.title}</h1>
                         </div>
                         <div className="col-md-3">
-                            <Link to={`/editPost/${post.id}`}><FaPencilSquate />Edit</Link>
+                            <Link to={`posts/editPost/${post.id}`}><FaPencilSquate />Edit</Link>
                             <FaTrash onClick={()=>{
                                 this.onPostDelete(post.id)
                                 }}/>

@@ -29,9 +29,9 @@ export default function comments( state = initialState, action){
             }
 
         case DELETE_COMMENT:
+            delete(state[action.comment.id]);
             return {
-                ...state,
-                [action.comment.id]:action.comment
+                ...state
             }
 
         case VOTE_COMMENT:

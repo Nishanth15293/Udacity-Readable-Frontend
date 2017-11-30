@@ -38,9 +38,9 @@ class App extends Component {
         <Route exact path='/' component={Dashboard} />
         <Route exact path='/:category' component={CategoryPage} />
     
+        <Route exact path='/posts/editPost/:id' component= {EditPost}/>
         <Route exact path='/:category/:post_id' component= {PostDetail}/>
         <Route exact path='/newPost' component= {CreatePost}/>
-        <Route exact path='/editPost/:id' component= {EditPost}/>
         <Route exact path='/posts/:id/comment' component= {CreateComment}/>
         <Route exact path='/posts/:id/:comment_id/edit' component= {EditComment}/>
 
